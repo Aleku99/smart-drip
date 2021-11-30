@@ -5,4 +5,17 @@
 }
 .welcome-page-content {
   flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+.welcome-page h1 {
+  color: #f5eec2;
+  margin: 0 auto;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
+    1px 1px 0 #000;
+  font-size: 4rem;
+}
+.time-dots {
+  animation: blink;
 }
