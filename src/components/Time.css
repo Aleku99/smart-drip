@@ -1,0 +1,8 @@
+#blinking-dots {
+  animation: blink 1.5s step-start 0s infinite;
+}
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
