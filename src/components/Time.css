@@ -1,5 +1,6 @@
 #blinking-dots {
   animation: blink 1.5s step-start 0s infinite;
+  font-size: 4rem;
 }
 @keyframes blink {
   50% {

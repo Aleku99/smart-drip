@@ -18,8 +18,8 @@ export default function WelcomePage() {
       <NavBar />
       <div className="welcome-page-content" style={background}>
         <Time />
-        <h1>Welcome Aleku</h1>
         <Weather />
+        <h1>Welcome Aleku</h1>
       </div>
     </div>
   );
