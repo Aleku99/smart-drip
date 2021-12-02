@@ -29,7 +29,6 @@ export default function Weather() {
   };
 
   function chooseWeatherIcon(description) {
-    console.log(description);
     switch (description.toLowerCase()) {
       case "thunderstorm":
         return <IoIosThunderstorm style={icon_style} />;
@@ -68,7 +67,7 @@ export default function Weather() {
       }
     }
     fetchWeatherData();
-  }, []);
+  });
 
   return (
     <div className="weather">

@@ -4,7 +4,7 @@ import "./WelcomePage.css";
 import Time from "../components/Time.jsx";
 import Weather from "../components/Weather.jsx";
 
-export default function WelcomePage() {
+function WelcomePage() {
   const background = {
     backgroundImage: `linear-gradient(
         rgba(0, 0, 0, 0.5),
@@ -24,3 +24,4 @@ export default function WelcomePage() {
     </div>
   );
 }
+export default WelcomePage;
