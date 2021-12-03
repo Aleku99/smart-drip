@@ -1,26 +1,40 @@
 import React from "react";
 import "./SelectedModeForm.css";
 
-function SelectedModeForm() {
+function SelectedModeForm(props) {
   return (
-    <div>
+    <div className="selected-mode-form">
       <h1>Select mode</h1>
-      <input
-        type="radio"
-        id="manual_fixed"
-        name="manual_fixed"
-        value="manual_fixed"
-      ></input>
-      <label for="manual_fixed">manual (fixed time)</label>
-      <input
-        type="radio"
-        id="manual_interval"
-        name="manual_interval"
-        value="manual_interval"
-      ></input>
-      <label for="manual_interval">manual (specified interval)</label>
-      <input type="radio" id="auto" name="auto" value="auto"></input>
-      <label for="auto">automatic (sensors dependent)</label>
+      <div className="selected-mode-form-input">
+        <input
+          onClick={props.handleSelection}
+          type="radio"
+          id="manual_fixed"
+          name="mode"
+          value="manual_fixed"
+        ></input>
+        <label htmlFor="manual_fixed">manual (fixed time)</label>
+      </div>
+      <div className="selected-mode-form-input">
+        <input
+          onClick={props.handleSelection}
+          type="radio"
+          id="manual_interval"
+          name="mode"
+          value="manual_interval"
+        ></input>
+        <label htmlFor="manual_interval">manual (specified interval)</label>
+      </div>
+      <div className="selected-mode-form-input">
+        <input
+          onClick={props.handleSelection}
+          type="radio"
+          id="auto"
+          name="mode"
+          value="auto"
+        ></input>
+        <label htmlFor="auto">automatic (sensors dependent)</label>
+      </div>
     </div>
   );
 }

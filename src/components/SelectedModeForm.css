@@ -1,0 +1,20 @@
+.selected-mode-form {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+.selected-mode-form h1 {
+  color: #f5eec2;
+}
+.selected-mode-form-input {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: row;
+  margin-left: 1rem;
+}
+.selected-mode-form-input input {
+  width: 3rem;
+}
+.selected-mode-form-input label {
+  margin: auto 0;
+}
