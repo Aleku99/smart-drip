@@ -5,7 +5,7 @@ import { Routes, Route } from "react-router-dom";
 import SignUp from "./pages/SignUp";
 import ChangeConfig from "./pages/ChangeConfig";
 import CheckHistory from "./pages/CheckHistory";
-import NoMatch from "react-router-nomatch";
+import NotFound from "./pages/NotFound.jsx";
 
 function App() {
   return (
@@ -17,7 +17,7 @@ function App() {
         <Route path="/welcomepage" element={<WelcomePage />}></Route>
         <Route path="/changeconfig" element={<ChangeConfig />}></Route>
         <Route path="/checkhistory" element={<CheckHistory />}></Route>
-        <Route path="*" element={<NoMatch />}></Route>
+        <Route path="*" element={<NotFound />}></Route>
       </Routes>
     </div>
   );
