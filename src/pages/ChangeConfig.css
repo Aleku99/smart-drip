@@ -1,0 +1,12 @@
+.change-config {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+}
+.change-config-content {
+  background-color: #416a59;
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}

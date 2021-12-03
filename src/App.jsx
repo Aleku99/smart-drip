@@ -16,7 +16,7 @@ function App() {
         <Route path="/signup" element={<SignUp />}></Route>
         <Route path="/welcomepage" element={<WelcomePage />}></Route>
         <Route path="/changeconfig" element={<ChangeConfig />}></Route>
-        <Route path="/checkhistory" element={<CheckHistory />}></Route>
+        <Route path="/checkhistory" element={<NotFound />}></Route>
         <Route path="*" element={<NotFound />}></Route>
       </Routes>
     </div>

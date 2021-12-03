@@ -10,7 +10,9 @@ function NotFound() {
           alt="smartdrip_logo"
         ></img>
       </div>
-      <h1>Ooooops, page you're searching for is not found</h1>
+      <h1 className="not-found-text">
+        Ooooops, page you're searching for is not found
+      </h1>
     </div>
   );
 }

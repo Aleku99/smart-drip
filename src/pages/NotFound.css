@@ -43,7 +43,7 @@ label {
   display: flex;
   flex-direction: column;
 }
-h1 {
+.not-found-text {
   margin: 3rem auto;
   color: #f5eec2;
 }
