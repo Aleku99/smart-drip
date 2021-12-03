@@ -1,6 +1,18 @@
 import React from "react";
 import "./SignUp.css";
 
+function handleSignUp(event) {
+  event.preventDefault();
+  let fname = event.target.elements.fname.value;
+  let lname = event.target.elements.lname.value;
+  let city = event.target.elements.city.value;
+  let address = event.target.elements.address.value;
+  let phonenumber = event.target.elements.phonenumber.value;
+  let email = event.target.elements.email.value;
+  let password = event.target.elements.pass.value;
+  console.log(fname, lname, city, address, phonenumber, email, password);
+}
+
 function SignUp() {
   return (
     <div className="login">
@@ -12,7 +24,7 @@ function SignUp() {
         ></img>
       </div>
       <div className="form-div">
-        <form>
+        <form onSubmit={handleSignUp}>
           <div className="input">
             <label htmlFor="fname">First name</label>
             <input type="text" id="fname" name="fname"></input>
@@ -31,7 +43,7 @@ function SignUp() {
           </div>
           <div className="input">
             <label htmlFor="phonenumber">Phone number</label>
-            <input type="email" id="phonenumber" name="emaphonenumberl"></input>
+            <input type="text" id="phonenumber" name="phonenumber"></input>
           </div>
           <div className="input">
             <label htmlFor="email">Email</label>

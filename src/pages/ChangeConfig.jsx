@@ -23,7 +23,6 @@ function ChangeConfig() {
       <NavBar />
       <div className="change-config-content">
         <SelectedModeForm handleSelection={selectionHandler} />
-        {/* {configOption === 2 ? : settingsArray[configOption]} */}
         {settingsArray[configOption]}
       </div>
     </div>
