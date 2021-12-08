@@ -1,19 +1,42 @@
+import axios from "axios";
 import React from "react";
 import "./SignUp.css";
+import { useNavigate } from "react-router-dom";
 
-function handleSignUp(event) {
-  event.preventDefault();
-  let fname = event.target.elements.fname.value;
-  let lname = event.target.elements.lname.value;
-  let city = event.target.elements.city.value;
-  let address = event.target.elements.address.value;
-  let phonenumber = event.target.elements.phonenumber.value;
-  let email = event.target.elements.email.value;
-  let password = event.target.elements.pass.value;
-  console.log(fname, lname, city, address, phonenumber, email, password);
-}
+function SignUp(props) {
+  let navigate = useNavigate();
 
-function SignUp() {
+  async function handleSignUp(event) {
+    event.preventDefault();
+    let fname = event.target.elements.fname.value;
+    let lname = event.target.elements.lname.value;
+    let city = event.target.elements.city.value;
+    let address = event.target.elements.address.value;
+    let phonenumber = event.target.elements.phonenumber.value;
+    let email = event.target.elements.email.value;
+    let password = event.target.elements.pass.value;
+    console.log(fname, lname, city, address, phonenumber, email, password);
+    await axios
+      .post("http://localhost:3001/signup", {
+        fname: fname,
+        lname: lname,
+        city: city,
+        address: address,
+        phonenumber: phonenumber,
+        email: email,
+        password: password,
+      })
+      .then((response) => {
+        console.log(response);
+        if (response.status === 200) {
+          props.handleSignUpData(response.data);
+          navigate("/welcomepage");
+        } else {
+          alert("Signup unsuccessfull");
+        }
+      });
+  }
+
   return (
     <div className="login">
       <div className="login-logo">
