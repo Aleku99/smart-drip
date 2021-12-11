@@ -18,18 +18,21 @@ function LogIn(props) {
       })
       .then(
         (response) => {
-          console.log(response);
+          console.log(response.status);
           if (response.status === 200) {
             props.handleLoginData(response.data);
             navigate("/welcomepage");
-          } else if (response.status === 406) {
-            alert("Username and password do not match");
-          } else if (response.status === 404) {
-            alert("User account doesn't exist");
           }
         },
         (error) => {
-          console.log(error);
+          console.log(error.response.status);
+          if (error.response.status === 404) {
+            alert("Username not found");
+            console.log("Username not found");
+          } else if (error.response.status === 401) {
+            alert("Password doesn't match");
+            console.log("Password doesn't match");
+          }
         }
       );
   }
