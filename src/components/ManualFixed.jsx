@@ -1,7 +1,8 @@
 import React from "react";
+import axios from "axios";
 import "./ManualFixed.css";
 function ManualFixed() {
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault();
     let mode = "0";
     let time = event.target.elements.time.value;
@@ -9,6 +10,13 @@ function ManualFixed() {
     let minutes = time.split(":")[1];
     let duration = event.target.elements.duration.value;
     console.log(mode, hour, minutes, duration);
+    await axios
+      .post("http://192.168.100.78:3001/change_config", {
+        mode: mode,
+      })
+      .then((response) => {
+        console.log(response);
+      });
   }
   return (
     <div className="settings-div">

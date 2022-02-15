@@ -1,12 +1,20 @@
 import React from "react";
+import axios from "axios";
 import "./ManualInterval.css";
 function ManualInterval() {
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault();
     let mode = "1";
     let interval = event.target.elements.time_interval.value;
     let duration = event.target.elements.duration.value;
     console.log(mode, interval, duration);
+    await axios
+      .post("http://192.168.100.78:3001/change_config", {
+        mode: mode,
+      })
+      .then((response) => {
+        console.log(response);
+      });
   }
   return (
     <div className="settings-div">

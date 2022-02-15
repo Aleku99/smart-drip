@@ -12,7 +12,7 @@ function LogIn(props) {
     let username = event.target.elements.username.value;
     let password = event.target.elements.pass.value;
     await axios
-      .post("http://localhost:3001/login", {
+      .post("http://192.168.100.78:3001/login", {
         username: username,
         password: password,
       })
@@ -72,3 +72,4 @@ function LogIn(props) {
   );
 }
 export default LogIn;
+//"http://192.168.100.78:3001/login"

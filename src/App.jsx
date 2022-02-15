@@ -19,7 +19,11 @@ function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path="/" element={<LogIn />}></Route>
+        <Route
+          exact
+          path="/"
+          element={<LogIn handleLoginData={handleLoginData} />}
+        ></Route>
         <Route
           path="/login"
           element={<LogIn handleLoginData={handleLoginData} />}

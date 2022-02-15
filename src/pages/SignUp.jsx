@@ -2,6 +2,9 @@ import axios from "axios";
 import React from "react";
 import "./SignUp.css";
 import { useNavigate } from "react-router-dom";
+import { database, ref, set } from "../api/firebase";
+import { v4 as uuidv4 } from "uuid";
+import bcrypt from "bcryptjs/dist/bcrypt";
 
 function SignUp(props) {
   let navigate = useNavigate();
@@ -15,26 +18,19 @@ function SignUp(props) {
     let phonenumber = event.target.elements.phonenumber.value;
     let email = event.target.elements.email.value;
     let password = event.target.elements.pass.value;
-    console.log(fname, lname, city, address, phonenumber, email, password);
-    await axios
-      .post("http://localhost:3001/signup", {
+
+    bcrypt.hash(password, 0, function (err, hash) {
+      let entry = {
         fname: fname,
         lname: lname,
         city: city,
         address: address,
         phonenumber: phonenumber,
         email: email,
-        password: password,
-      })
-      .then((response) => {
-        console.log(response);
-        if (response.status === 200) {
-          props.handleSignUpData(response.data);
-          navigate("/welcomepage");
-        } else {
-          alert("Signup unsuccessfull");
-        }
-      });
+        password: hash,
+      };
+      set(ref(database, uuidv4()), entry);
+    });
   }
 
   return (
