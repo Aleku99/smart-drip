@@ -11,9 +11,11 @@ import NotFound from "./pages/NotFound.jsx";
 function App() {
   const [userData, setUserData] = React.useState();
   function handleSignUpData(data) {
+    localStorage.setItem("userData", JSON.stringify(data));
     setUserData(data);
   }
   function handleLoginData(data) {
+    localStorage.setItem("userData", JSON.stringify(data));
     setUserData(data);
   }
   return (

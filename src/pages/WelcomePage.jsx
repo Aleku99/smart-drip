@@ -12,13 +12,14 @@ function WelcomePage(props) {
       ), url("welcome_page_background.jpg")`,
     backgroundSize: "cover",
   };
+
   return (
     <div className="welcome-page">
       <NavBar />
       <div className="welcome-page-content" style={background}>
         <Time />
-        {/* <Weather /> */}
-        <h1>Welcome {props.userData.fname}</h1>
+        <Weather />
+        <h1>Welcome {JSON.parse(localStorage.getItem("userData")).fname}</h1>
       </div>
     </div>
   );

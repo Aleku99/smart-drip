@@ -53,10 +53,12 @@ export default function Weather() {
 
   useEffect(function effectFunction() {
     async function fetchWeatherData() {
+      console.log("muuuie");
       try {
         let { data } = await axios.get(
           "https://api.openweathermap.org/data/2.5/weather?q=Timisoara&appid=a42ec7af1eab5c20c77c4053491f6a96&units=metric"
         );
+
         setWeatherData({
           temp: Math.round(data.main.temp),
           city: data.name,
@@ -67,7 +69,7 @@ export default function Weather() {
       }
     }
     fetchWeatherData();
-  });
+  }, []);
 
   return (
     <div className="weather">

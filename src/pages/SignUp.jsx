@@ -1,4 +1,3 @@
-import axios from "axios";
 import React from "react";
 import "./SignUp.css";
 import { useNavigate } from "react-router-dom";

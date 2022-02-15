@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./LogIn.css";
 import { useNavigate } from "react-router-dom";
-import { database, ref, set, get, child } from "../api/firebase";
+import { ref, get, child } from "../api/firebase";
 import bcrypt from "bcryptjs/dist/bcrypt";
 import { getDatabase } from "firebase/database";
 
@@ -36,7 +36,7 @@ function LogIn(props) {
               );
             }
           });
-          if (userFound == false) {
+          if (userFound === false) {
             alert("Username not found");
           }
         } else {
