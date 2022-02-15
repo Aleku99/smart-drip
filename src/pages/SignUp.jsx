@@ -20,6 +20,9 @@ function SignUp(props) {
     let password = event.target.elements.pass.value;
 
     bcrypt.hash(password, 0, function (err, hash) {
+      if (err) {
+        alert("Signup unsuccessfull");
+      }
       let entry = {
         fname: fname,
         lname: lname,
@@ -30,6 +33,8 @@ function SignUp(props) {
         password: hash,
       };
       set(ref(database, uuidv4()), entry);
+      props.handleSignUpData(entry);
+      navigate("/welcomepage");
     });
   }
 

@@ -1,8 +1,10 @@
-import axios from "axios";
 import React from "react";
 import { Link } from "react-router-dom";
 import "./LogIn.css";
 import { useNavigate } from "react-router-dom";
+import { database, ref, set, get, child } from "../api/firebase";
+import bcrypt from "bcryptjs/dist/bcrypt";
+import { getDatabase } from "firebase/database";
 
 function LogIn(props) {
   let navigate = useNavigate();
@@ -11,30 +13,40 @@ function LogIn(props) {
     event.preventDefault();
     let username = event.target.elements.username.value;
     let password = event.target.elements.pass.value;
-    await axios
-      .post("http://192.168.100.78:3001/login", {
-        username: username,
-        password: password,
-      })
-      .then(
-        (response) => {
-          console.log(response.status);
-          if (response.status === 200) {
-            props.handleLoginData(response.data);
-            navigate("/welcomepage");
-          }
-        },
-        (error) => {
-          console.log(error.response.status);
-          if (error.response.status === 404) {
+    let userFound = false;
+
+    const dbRef = ref(getDatabase());
+    get(child(dbRef, "/"))
+      .then((snapshot) => {
+        if (snapshot.exists()) {
+          snapshot.forEach((child) => {
+            if (child.val().email === username) {
+              userFound = true;
+              bcrypt.compare(
+                password,
+                child.val().password,
+                function (err, result) {
+                  if (result) {
+                    props.handleLoginData(child.val());
+                    navigate("/welcomepage");
+                  } else {
+                    alert("Password not correct");
+                  }
+                }
+              );
+            }
+          });
+          if (userFound == false) {
             alert("Username not found");
-            console.log("Username not found");
-          } else if (error.response.status === 401) {
-            alert("Password doesn't match");
-            console.log("Password doesn't match");
           }
+        } else {
+          console.log("No data available from database");
+          alert("Sign-in not succesful");
         }
-      );
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   }
 
   return (

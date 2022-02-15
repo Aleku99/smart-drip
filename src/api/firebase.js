@@ -1,6 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getDatabase, ref, set } from "firebase/database";
-import * as data from "../smart-drip-b2119-firebase-adminsdk-p406q-6660750f24.json";
+import { getDatabase, ref, set, get, child } from "firebase/database";
 
 const firebaseConfig = {
   apiKey: "AIzaSyBgMUU94MW75z9gIXMG_rWTuJixKgZRQeE",
@@ -16,4 +15,4 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
 
-export { database, ref, set };
+export { database, ref, set, get, child };
