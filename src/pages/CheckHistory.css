@@ -1,0 +1,14 @@
+.check-history{ 
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+}
+.check-history-content {
+    /* background-color: #416a59; */
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding-left: 8rem;
+    padding-top: 8rem;
+  }

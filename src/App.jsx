@@ -39,7 +39,7 @@ function App() {
           element={<WelcomePage userData={userData} />}
         ></Route>
         <Route path="/changeconfig" element={<ChangeConfig />}></Route>
-        <Route path="/checkhistory" element={<NotFound />}></Route>
+        <Route path="/checkhistory" element={<CheckHistory />}></Route>
         <Route path="*" element={<NotFound />}></Route>
       </Routes>
     </div>
