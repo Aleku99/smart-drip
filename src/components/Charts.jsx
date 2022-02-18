@@ -12,6 +12,7 @@ import {
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
 import faker from 'faker';
+import "./Charts.css";
 
 ChartJS.register(
   CategoryScale,
@@ -42,21 +43,23 @@ export const data = {
     {
       label: 'Humidity',
       data: labels.map(() => faker.datatype.number({ min: -1000, max: 1000 })),
-      borderColor: 'rgb(255, 99, 132)',
-      backgroundColor: 'rgba(255, 99, 132, 0.5)',
+      borderColor: 'rgb(53, 162, 235)',
+      backgroundColor: 'rgba(53, 162, 235, 0.5)',
+      color: '#000000'
     },
     {
       label: 'Temperature',
       data: labels.map(() => faker.datatype.number({ min: -1000, max: 1000 })),
-      borderColor: 'rgb(53, 162, 235)',
-      backgroundColor: 'rgba(53, 162, 235, 0.5)',
+      borderColor: 'rgb(255, 165, 0)',
+      backgroundColor: 'rgba(255, 165, 0, 0.5)',
+      color: '#000000'
     },
   ],
 };
 
 function Charts() {
   return (
-    <div>
+    <div className="charts">
       <Line options={options} data={data} />
     </div>
   );

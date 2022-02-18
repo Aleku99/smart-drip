@@ -4,11 +4,11 @@
   height: 100%;
 }
 .check-history-content {
-    /* background-color: #416a59; */
+    background-color: #416a59;
     flex-grow: 1;
     display: flex;
     justify-content: center;
-    flex-direction: column;
+    flex-direction: row;
     padding-left: 8rem;
     padding-top: 8rem;
   }
