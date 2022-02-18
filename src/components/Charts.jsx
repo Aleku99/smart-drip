@@ -14,6 +14,8 @@ import { Line } from 'react-chartjs-2';
 import faker from 'faker';
 import "./Charts.css";
 
+
+
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -61,6 +63,12 @@ function Charts() {
   return (
     <div className="charts">
       <Line options={options} data={data} />
+      <div className="buttons">
+        <button className="button3">24 hours</button>
+        <button className="button3">1 week</button>
+        <button className="button3">1 Month</button>
+      </div>
+      
     </div>
   );
 }

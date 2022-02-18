@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 export default function NavBar() {
   const icons_style = { color: "#f5eec2", margin: "auto 0.3rem" };
   return (
-    <div className="navbar">
+    <div className="mynavbar">
       <div className="navbar_div">
         <img
           className="navbar-logo"
