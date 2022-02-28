@@ -8,7 +8,7 @@ function CheckHistory() {
   const [chartData, setChartData] = useState({humidity_data:[], temperature_data:[]})
   useEffect(() => {
     const fetchPrices = async () => {
-      const res = await fetch("http://localhost:3001/checkhistory");
+      const res = await fetch("http://192.168.100.78:3001/check_history");
       const data = await res.json();
       setChartData(data);
       console.log(1);
