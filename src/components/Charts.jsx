@@ -13,7 +13,7 @@ import {
 import { Line } from 'react-chartjs-2';
 import faker from 'faker';
 import "./Charts.css";
-import {useState} from "react";
+import {useState, useEffect} from "react";
 
 
 
@@ -40,7 +40,6 @@ export const options = {
   },
 };
 
-// const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
 const date = new Date();
 let labels_24hrs = Array.from(Array(24).keys()).reverse();
 labels_24hrs = labels_24hrs.map(element => chooseHour(element));
@@ -77,10 +76,10 @@ function chooseDay(daysAgo){
 }
 
 
-function Charts() {
-  chooseDay(7);
+function Charts(props) {
   const [label, setLabel] = useState("24hrs");
-
+  
+  
   function switchlabels(event){
     setLabel(event.target.value);
   }
@@ -102,14 +101,14 @@ function Charts() {
       datasets: [
         {
           label: 'Humidity',
-          data: chooseLabel(label).map(() => faker.datatype.number({ min: -1000, max: 1000 })),
+          data: props.data.humidity_data,
           borderColor: 'rgb(53, 162, 235)',
           backgroundColor: 'rgba(53, 162, 235, 0.5)',
           color: '#000000'
         },
         {
           label: 'Temperature',
-          data: chooseLabel(label).map(() => faker.datatype.number({ min: -1000, max: 1000 })),
+          data: props.data.temperature_data,
           borderColor: 'rgb(255, 165, 0)',
           backgroundColor: 'rgba(255, 165, 0, 0.5)',
           color: '#000000'
@@ -117,9 +116,7 @@ function Charts() {
       ],
     };
   
-
   
-
   return (
     <div className="charts">
       <Line options={options} data={data} />
