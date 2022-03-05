@@ -1,21 +1,22 @@
-import React, { useState } from "react";
-import NavBar from "../components/NavBar";
-import "./ChangeConfig.css";
-import SelectedModeForm from "../components/SelectedModeForm.jsx";
-import ManualFixed from "../components/ManualFixed.jsx";
-import ManualInterval from "../components/ManualInterval.jsx";
-import Automatic from "../components/Automatic";
+import React, { useState } from 'react'
+import NavBar from '../components/NavBar'
+import './ChangeConfig.css'
+import SelectedModeForm from '../components/SelectedModeForm.jsx'
+import ManualFixed from '../components/ManualFixed.jsx'
+import ManualInterval from '../components/ManualInterval.jsx'
+import Automatic from '../components/Automatic'
 
 function ChangeConfig() {
-  const [configOption, setConfigOption] = useState(2);
-  const settingsArray = [<ManualFixed />, <ManualInterval />, <Automatic />];
+  const [configOption, setConfigOption] = useState()
+  const settingsArray = [<ManualFixed />, <ManualInterval />, <Automatic />]
   function selectionHandler(event) {
-    if (event.target.value === "manual_fixed") {
-      setConfigOption(0);
-    } else if (event.target.value === "manual_interval") {
-      setConfigOption(1);
+    if (event.target.value === 'manual_fixed') {
+      setConfigOption(0)
+    } else if (event.target.value === 'manual_interval') {
+      setConfigOption(1)
     } else {
-      setConfigOption(2);
+      console.log('instantiez 2')
+      setConfigOption(2)
     }
   }
   return (
@@ -26,6 +27,6 @@ function ChangeConfig() {
         {settingsArray[configOption]}
       </div>
     </div>
-  );
+  )
 }
-export default ChangeConfig;
+export default ChangeConfig
