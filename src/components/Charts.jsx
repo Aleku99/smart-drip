@@ -78,6 +78,8 @@ function chooseDay(daysAgo){
 
 function Charts(props) {
   const [label, setLabel] = useState("24hrs");
+  let temperature_data = []; //use in chooseData function
+  let humidity_data = []; //use in chooseData function
   
   
   function switchlabels(event){
@@ -93,6 +95,32 @@ function Charts(props) {
     }
     else{
       return labels_1month;
+    }
+  }
+  function chooseData(label, type){ //continue implementation
+    switch(type){
+      case "HUMIDITY":
+        if(label==="24hrs"){
+          
+        }
+        else if(label === "7days"){
+          return labels_7days;
+        }
+        else{
+          return labels_1month;
+        }
+        break;
+      case "TEMPERATURE":
+        if(label==="24hrs"){
+          return labels_24hrs;
+        }
+        else if(label === "7days"){
+          return labels_7days;
+        }
+        else{
+          return labels_1month;
+        }
+        break;
     }
   }
 
