@@ -1,52 +1,52 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import "./LogIn.css";
-import { useNavigate } from "react-router-dom";
-import { ref, get, child } from "../api/firebase";
-import bcrypt from "bcryptjs/dist/bcrypt";
-import { getDatabase } from "firebase/database";
+import React from 'react'
+import { Link } from 'react-router-dom'
+import './LogIn.css'
+import { useNavigate } from 'react-router-dom'
+import { ref, get, child } from '../api/firebase'
+import bcrypt from 'bcryptjs/dist/bcrypt'
+import { getDatabase } from 'firebase/database'
 
 function LogIn(props) {
-  let navigate = useNavigate();
+  let navigate = useNavigate()
 
   async function handleLogIn(event) {
-    event.preventDefault();
-    let username = event.target.elements.username.value;
-    let password = event.target.elements.pass.value;
-    let userFound = false;
+    event.preventDefault()
+    let username = event.target.elements.username.value
+    let password = event.target.elements.pass.value
+    let userFound = false
 
-    const dbRef = ref(getDatabase());
-    get(child(dbRef, "/"))
+    const dbRef = ref(getDatabase())
+    get(child(dbRef, '/'))
       .then((snapshot) => {
         if (snapshot.exists()) {
           snapshot.forEach((child) => {
             if (child.val().email === username) {
-              userFound = true;
+              userFound = true
               bcrypt.compare(
                 password,
                 child.val().password,
                 function (err, result) {
                   if (result) {
-                    props.handleLoginData(child.val());
-                    navigate("/welcomepage");
+                    props.handleLoginData(child.val())
+                    navigate('/welcomepage')
                   } else {
-                    alert("Password not correct");
+                    alert('Password not correct')
                   }
                 }
-              );
+              )
             }
-          });
+          })
           if (userFound === false) {
-            alert("Username not found");
+            alert('Usernasme not found')
           }
         } else {
-          console.log("No data available from database");
-          alert("Sign-in not succesful");
+          console.log('No data available from database')
+          alert('Sign-in not succesful')
         }
       })
       .catch((error) => {
-        console.error(error);
-      });
+        console.error(error)
+      })
   }
 
   return (
@@ -81,7 +81,7 @@ function LogIn(props) {
         </p>
       </div>
     </div>
-  );
+  )
 }
-export default LogIn;
+export default LogIn
 //"http://192.168.100.78:3001/login"

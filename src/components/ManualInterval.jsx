@@ -1,20 +1,20 @@
-import React from "react";
-import axios from "axios";
-import "./ManualInterval.css";
+import React from 'react'
+import axios from 'axios'
+import './ManualInterval.css'
 function ManualInterval() {
   async function handleSubmit(event) {
-    event.preventDefault();
-    let mode = "1";
-    let interval = event.target.elements.time_interval.value;
-    let duration = event.target.elements.duration.value;
-    console.log(mode, interval, duration);
+    event.preventDefault()
+    let mode = '1'
+    let interval = event.target.elements.time_interval.value
+    let duration = event.target.elements.duration.value
+
     await axios
-      .post("http://192.168.100.78:3001/change_config", {
+      .post('http://192.168.100.78:3001/change_config', {
         mode: mode,
       })
       .then((response) => {
-        console.log(response);
-      });
+        console.log(response)
+      })
   }
   return (
     <div className="settings-div">
@@ -39,10 +39,10 @@ function ManualInterval() {
             max="600"
           ></input>
         </div>
-        <input type="submit" value="Submit" />
+        <input type="submit" value="Save" />
       </form>
     </div>
-  );
+  )
 }
 
-export default ManualInterval;
+export default ManualInterval

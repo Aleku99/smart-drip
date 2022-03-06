@@ -1,22 +1,22 @@
-import React from "react";
-import axios from "axios";
-import "./ManualFixed.css";
+import React from 'react'
+import axios from 'axios'
+import './ManualFixed.css'
 function ManualFixed() {
   async function handleSubmit(event) {
-    event.preventDefault();
-    let mode = "0";
-    let time = event.target.elements.time.value;
-    let hour = time.split(":")[0];
-    let minutes = time.split(":")[1];
-    let duration = event.target.elements.duration.value;
-    console.log(mode, hour, minutes, duration);
+    event.preventDefault()
+    let mode = '0'
+    let time = event.target.elements.time.value
+    let hour = time.split(':')[0]
+    let minutes = time.split(':')[1]
+    let duration = event.target.elements.duration.value
+
     await axios
-      .post("http://192.168.100.78:3001/change_config", {
+      .post('http://192.168.100.78:3001/change_config', {
         mode: mode,
       })
       .then((response) => {
-        console.log(response);
-      });
+        console.log(response)
+      })
   }
   return (
     <div className="settings-div">
@@ -35,10 +35,10 @@ function ManualFixed() {
             max="600"
           ></input>
         </div>
-        <input type="submit" value="Submit" />
+        <input type="submit" value="Save" />
       </form>
     </div>
-  );
+  )
 }
 
-export default ManualFixed;
+export default ManualFixed

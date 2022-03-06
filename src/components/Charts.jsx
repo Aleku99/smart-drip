@@ -99,14 +99,12 @@ function Charts(props) {
     switch (type) {
       case 'HUMIDITY':
         if (label === '24hrs') {
-          console.log('HUMIDITY24hrs')
           props.data.humidity_data.reverse().forEach((element, index) => {
             if (index < 24) {
               humidity_data.push(element)
             }
           })
         } else if (label === '7days') {
-          console.log('HUMIDITY7days')
           let average = 0
           let counter = 0
           props.data.humidity_data.reverse().forEach((element, index) => {
@@ -120,7 +118,6 @@ function Charts(props) {
             }
           })
         } else {
-          console.log('HUMIDITY1month')
           let average = 0
           let counter = 0
           props.data.humidity_data.reverse().forEach((element, index) => {
@@ -137,14 +134,12 @@ function Charts(props) {
         break
       case 'TEMPERATURE':
         if (label === '24hrs') {
-          console.log('TEMP24hrs')
           props.data.temperature_data.reverse().forEach((element, index) => {
             if (index < 24) {
               temperature_data.push(element)
             }
           })
         } else if (label === '7days') {
-          console.log('TEMP7days')
           let average = 0
           let counter = 0
           props.data.temperature_data.reverse().forEach((element, index) => {
@@ -158,7 +153,6 @@ function Charts(props) {
             }
           })
         } else {
-          console.log('TEMP1month')
           let average = 0
           let counter = 0
           props.data.temperature_data.reverse().forEach((element, index) => {
