@@ -15,7 +15,6 @@ function ChangeConfig() {
     } else if (event.target.value === 'manual_interval') {
       setConfigOption(1)
     } else {
-      console.log('instantiez 2')
       setConfigOption(2)
     }
   }

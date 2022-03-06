@@ -1,8 +1,8 @@
-import React from "react";
-import NavBar from "../components/NavBar";
-import "./WelcomePage.css";
-import Time from "../components/Time.jsx";
-import Weather from "../components/Weather.jsx";
+import React from 'react'
+import NavBar from '../components/NavBar'
+import './WelcomePage.css'
+import Time from '../components/Time.jsx'
+import Weather from '../components/Weather.jsx'
 
 function WelcomePage(props) {
   const background = {
@@ -10,8 +10,8 @@ function WelcomePage(props) {
         rgba(0, 0, 0, 0.5),
         rgba(0, 0, 0, 0.5)
       ), url("welcome_page_background.jpg")`,
-    backgroundSize: "cover",
-  };
+    backgroundSize: 'cover',
+  }
 
   return (
     <div className="welcome-page">
@@ -19,9 +19,9 @@ function WelcomePage(props) {
       <div className="welcome-page-content" style={background}>
         <Time />
         <Weather />
-        <h1>Welcome {JSON.parse(localStorage.getItem("userData")).fname}</h1>
+        <h1>Welcome {JSON.parse(sessionStorage.getItem('userData')).fname}</h1>
       </div>
     </div>
-  );
+  )
 }
-export default WelcomePage;
+export default WelcomePage

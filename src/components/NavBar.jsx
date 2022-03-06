@@ -1,12 +1,18 @@
-import React from "react";
-import "./NavBar.css";
-import { FiSettings } from "react-icons/fi";
-import { AiOutlineHistory } from "react-icons/ai";
-import { GoSignOut } from "react-icons/go";
-import { Link } from "react-router-dom";
+import React from 'react'
+import './NavBar.css'
+import { FiSettings } from 'react-icons/fi'
+import { AiOutlineHistory } from 'react-icons/ai'
+import { GoSignOut } from 'react-icons/go'
+import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
+
+function signOut() {
+  sessionStorage.clear()
+}
 
 export default function NavBar() {
-  const icons_style = { color: "#f5eec2", margin: "auto 0.3rem" };
+  const icons_style = { color: '#f5eec2', margin: 'auto 0.3rem' }
+
   return (
     <div className="mynavbar">
       <div className="navbar_div">
@@ -30,7 +36,7 @@ export default function NavBar() {
       </div>
       <div className="navbar_div">
         <GoSignOut style={icons_style} />
-        <Link to="/login">
+        <Link to="/login" onClick={signOut}>
           <p>Sign out</p>
         </Link>
       </div>
@@ -39,5 +45,5 @@ export default function NavBar() {
         <p className="navbar-copyright">Copyright 2021 &copy; Alex Loghin</p>
       </div>
     </div>
-  );
+  )
 }

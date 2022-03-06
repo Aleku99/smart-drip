@@ -1,30 +1,34 @@
-import React from "react";
-import "./App.css";
-import WelcomePage from "./pages/WelcomePage";
-import LogIn from "./pages/LogIn";
-import { Routes, Route } from "react-router-dom";
-import SignUp from "./pages/SignUp";
-import ChangeConfig from "./pages/ChangeConfig";
-import CheckHistory from "./pages/CheckHistory";
-import NotFound from "./pages/NotFound.jsx";
+import React from 'react'
+import './App.css'
+import WelcomePage from './pages/WelcomePage'
+import LogIn from './pages/LogIn'
+import { Routes, Route } from 'react-router-dom'
+import SignUp from './pages/SignUp'
+import ChangeConfig from './pages/ChangeConfig'
+import CheckHistory from './pages/CheckHistory'
+import NotFound from './pages/NotFound.jsx'
 
 function App() {
-  const [userData, setUserData] = React.useState();
+  const [userData, setUserData] = React.useState()
   function handleSignUpData(data) {
-    localStorage.setItem("userData", JSON.stringify(data));
-    setUserData(data);
+    sessionStorage.setItem('userData', JSON.stringify(data))
+    setUserData(data)
   }
   function handleLoginData(data) {
-    localStorage.setItem("userData", JSON.stringify(data));
-    setUserData(data);
+    sessionStorage.setItem('userData', JSON.stringify(data))
+    setUserData(data)
   }
+  if (!userData) {
+    return <LogIn handleLoginData={handleLoginData} />
+  }
+
   return (
     <div className="App">
       <Routes>
         <Route
           exact
           path="/"
-          element={<LogIn handleLoginData={handleLoginData} />}
+          element={<WelcomePage userData={userData} />}
         ></Route>
         <Route
           path="/login"
@@ -43,7 +47,7 @@ function App() {
         <Route path="*" element={<NotFound />}></Route>
       </Routes>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
