@@ -5,19 +5,19 @@ function handleSubmit() {
   axios
     .post('http://192.168.100.78:3001/change_config', {
       mode: mode,
-    })
+    }, {
+      headers: {
+          'Content-Type': 'application/json',
+      }
+  })
     .then((response) => {
       console.log(response)
     })
 }
 function Automatic() {
-  //TODO: check why axios.post is called 2 times
-  handleSubmit()
+  React.useEffect(()=>{
+    handleSubmit()
+  })
   return <div className="automatic"></div>
-  // return (
-  //   <div className="automatic">
-  //     <button onClick={handleSubmit}>Submit</button>
-  //   </div>
-  // )
 }
 export default Automatic
