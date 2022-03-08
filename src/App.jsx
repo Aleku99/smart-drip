@@ -9,7 +9,7 @@ import CheckHistory from './pages/CheckHistory'
 import NotFound from './pages/NotFound.jsx'
 
 function App() {
-  const [userData, setUserData] = React.useState()
+  const [userData, setUserData] = React.useState(JSON.parse(sessionStorage.getItem('userData')))
   function handleSignUpData(data) {
     sessionStorage.setItem('userData', JSON.stringify(data))
     setUserData(data)
