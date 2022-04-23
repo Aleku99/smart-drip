@@ -9,7 +9,9 @@ import CheckHistory from './pages/CheckHistory'
 import NotFound from './pages/NotFound.jsx'
 
 function App() {
-  const [userData, setUserData] = React.useState(JSON.parse(sessionStorage.getItem('userData')))
+  const [userData, setUserData] = React.useState(
+    JSON.parse(sessionStorage.getItem('userData'))
+  )
   function handleSignUpData(data) {
     sessionStorage.setItem('userData', JSON.stringify(data))
     setUserData(data)
@@ -19,7 +21,27 @@ function App() {
     setUserData(data)
   }
   if (!userData) {
-    return <LogIn handleLoginData={handleLoginData} />
+    return (
+      <div className="App">
+        <Routes>
+          <Route
+            exact
+            path="/"
+            element={<LogIn handleLoginData={handleLoginData} />}
+          ></Route>
+          <Route
+            path="/login"
+            element={<LogIn handleLoginData={handleLoginData} />}
+          ></Route>
+          <Route
+            path="/signup"
+            element={<SignUp handleSignUpData={handleSignUpData} />}
+          ></Route>
+          <Route path="*" element={<NotFound />}></Route>
+        </Routes>
+      </div>
+    )
+    // <LogIn handleLoginData={handleLoginData} />
   }
 
   return (
@@ -30,10 +52,7 @@ function App() {
           path="/"
           element={<WelcomePage userData={userData} />}
         ></Route>
-        <Route
-          path="/login"
-          element={<LogIn handleLoginData={handleLoginData} />}
-        ></Route>
+
         <Route
           path="/signup"
           element={<SignUp handleSignUpData={handleSignUpData} />}
