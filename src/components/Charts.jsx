@@ -185,14 +185,14 @@ function Charts(props) {
     datasets: [
       {
         label: 'Humidity',
-        data: chooseData(label, 'HUMIDITY'),
+        data: chooseData(label, 'HUMIDITY').reverse(),
         borderColor: 'rgb(53, 162, 235)',
         backgroundColor: 'rgba(53, 162, 235, 0.5)',
         color: '#000000',
       },
       {
         label: 'Temperature',
-        data: chooseData(label, 'TEMPERATURE'),
+        data: chooseData(label, 'TEMPERATURE').reverse(),
         borderColor: 'rgb(255, 165, 0)',
         backgroundColor: 'rgba(255, 165, 0, 0.5)',
         color: '#000000',
