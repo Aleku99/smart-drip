@@ -51,7 +51,7 @@ function ChangeConfig() {
       </div>
     </div>
   ) : (
-    <NotFound text="Irrigation system not found on current network" />
+    <NotFound text="System not found on current network" />
   )
 }
 export default ChangeConfig

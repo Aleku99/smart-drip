@@ -18,9 +18,13 @@ function CheckHistory() {
   const USER_TOKEN = JSON.parse(sessionStorage.getItem('userData')).password
   useEffect(() => {
     const fetchHistory = async () => {
-      const res = await fetch('http://192.168.100.78:3001/check_history')
-      const data = await res.json()
-      setChartData(data)
+      try {
+        const res = await fetch('http://192.168.100.78:3001/check_history')
+        const data = await res.json()
+        setChartData(data)
+      } catch (error) {
+        console.log(error)
+      }
     }
     async function checkSystem() {
       axios
