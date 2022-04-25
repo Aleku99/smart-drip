@@ -11,6 +11,8 @@ function ManualInterval() {
     await axios
       .post('http://192.168.100.78:3001/change_config', {
         mode: mode,
+        interval: interval,
+        duration: duration,
       })
       .then((response) => {
         console.log(response)

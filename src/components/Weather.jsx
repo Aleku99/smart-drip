@@ -13,7 +13,7 @@ import {
   BsFillMoonFill,
 } from 'react-icons/bs'
 
-export default function Weather() {
+export default function Weather(props) {
   const [weatherData, setWeatherData] = useState({
     temp: 'unknown',
     city: 'unknown',
@@ -54,8 +54,11 @@ export default function Weather() {
   useEffect(function effectFunction() {
     async function fetchWeatherData() {
       try {
+        let city = JSON.parse(sessionStorage.getItem('userData')).city
         let { data } = await axios.get(
-          'https://api.openweathermap.org/data/2.5/weather?q=Timisoara&appid=a42ec7af1eab5c20c77c4053491f6a96&units=metric'
+          'https://api.openweathermap.org/data/2.5/weather?q=' +
+            city +
+            '&appid=a42ec7af1eab5c20c77c4053491f6a96&units=metric'
         )
 
         setWeatherData({

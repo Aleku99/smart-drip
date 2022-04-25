@@ -37,11 +37,15 @@ function App() {
             path="/signup"
             element={<SignUp handleSignUpData={handleSignUpData} />}
           ></Route>
-          <Route path="*" element={<NotFound />}></Route>
+          <Route
+            path="*"
+            element={
+              <NotFound text="Ooooops, page you're searching for is not found" />
+            }
+          ></Route>
         </Routes>
       </div>
     )
-    // <LogIn handleLoginData={handleLoginData} />
   }
 
   return (
@@ -63,7 +67,12 @@ function App() {
         ></Route>
         <Route path="/changeconfig" element={<ChangeConfig />}></Route>
         <Route path="/checkhistory" element={<CheckHistory />}></Route>
-        <Route path="*" element={<NotFound />}></Route>
+        <Route
+          path="*"
+          element={
+            <NotFound text="Ooooops, page you're searching for is not found" />
+          }
+        ></Route>
       </Routes>
     </div>
   )

@@ -1,6 +1,6 @@
-import React from "react";
-import "./NotFound.css";
-function NotFound() {
+import React from 'react'
+import './NotFound.css'
+function NotFound(props) {
   return (
     <div className="login">
       <div className="login-logo">
@@ -10,10 +10,8 @@ function NotFound() {
           alt="smartdrip_logo"
         ></img>
       </div>
-      <h1 className="not-found-text">
-        Ooooops, page you're searching for is not found
-      </h1>
+      <h1 className="not-found-text">{props.text}</h1>
     </div>
-  );
+  )
 }
-export default NotFound;
+export default NotFound
