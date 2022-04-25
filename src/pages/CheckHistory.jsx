@@ -14,7 +14,7 @@ function CheckHistory() {
     temperature_data: [],
   })
   const dispatch = useDispatch()
-  const systemDetected = useSelector((state) => state.systemDetected)
+  const systemDetected = useSelector((state) => state.system.systemDetected)
   const USER_TOKEN = JSON.parse(sessionStorage.getItem('userData')).password
   useEffect(() => {
     const fetchHistory = async () => {

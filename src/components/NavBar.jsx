@@ -4,8 +4,11 @@ import { FiSettings } from 'react-icons/fi'
 import { AiOutlineHistory } from 'react-icons/ai'
 import { GoSignOut } from 'react-icons/go'
 import { Link } from 'react-router-dom'
+import { authActions } from '../store/index'
+import { useDispatch } from 'react-redux'
 
 export default function NavBar() {
+  const dispatch = useDispatch()
   const icons_style = { color: '#f5eec2', margin: 'auto 0.3rem' }
 
   return (
@@ -35,6 +38,7 @@ export default function NavBar() {
           to="/login"
           onClick={() => {
             sessionStorage.clear()
+            dispatch(authActions.setFalse())
           }}
         >
           <p>Sign out</p>

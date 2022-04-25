@@ -14,7 +14,7 @@ function ChangeConfig() {
   const [configOption, setConfigOption] = useState()
   const settingsArray = [<ManualFixed />, <ManualInterval />, <Automatic />]
   const dispatch = useDispatch()
-  const systemDetected = useSelector((state) => state.systemDetected)
+  const systemDetected = useSelector((state) => state.system.systemDetected)
   const USER_TOKEN = JSON.parse(sessionStorage.getItem('userData')).password
   function selectionHandler(event) {
     if (event.target.value === 'manual_fixed') {

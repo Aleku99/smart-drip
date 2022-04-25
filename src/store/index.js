@@ -12,11 +12,24 @@ const systemSlice = createSlice({
     },
   },
 })
+const authSlice = createSlice({
+  name: 'authenticated',
+  initialState: { authenticated: false },
+  reducers: {
+    setTrue(state) {
+      state.authenticated = true
+    },
+    setFalse(state) {
+      state.authenticated = false
+    },
+  },
+})
 
 const store = configureStore({
-  reducer: systemSlice.reducer,
+  reducer: { system: systemSlice.reducer, auth: authSlice.reducer },
 })
 
 export const systemActions = systemSlice.actions
+export const authActions = authSlice.actions
 
 export default store
