@@ -1,9 +1,8 @@
 import { configureStore, createSlice } from '@reduxjs/toolkit'
 
-const initialState = { systemDetected: false }
 const systemSlice = createSlice({
   name: 'systemDetected',
-  initialState: initialState,
+  initialState: { systemDetected: false },
   reducers: {
     setTrue(state) {
       state.systemDetected = true

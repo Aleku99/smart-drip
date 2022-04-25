@@ -35,9 +35,7 @@ function CheckHistory() {
         })
     }
     checkSystem()
-    if (systemDetected === true) {
-      fetchHistory()
-    }
+    fetchHistory()
   }, [])
 
   return systemDetected ? (

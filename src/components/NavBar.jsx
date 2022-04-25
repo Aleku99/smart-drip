@@ -4,11 +4,6 @@ import { FiSettings } from 'react-icons/fi'
 import { AiOutlineHistory } from 'react-icons/ai'
 import { GoSignOut } from 'react-icons/go'
 import { Link } from 'react-router-dom'
-import { useNavigate } from 'react-router-dom'
-
-function signOut() {
-  sessionStorage.clear()
-}
 
 export default function NavBar() {
   const icons_style = { color: '#f5eec2', margin: 'auto 0.3rem' }
@@ -36,7 +31,12 @@ export default function NavBar() {
       </div>
       <div className="navbar_div">
         <GoSignOut style={icons_style} />
-        <Link to="/login" onClick={signOut}>
+        <Link
+          to="/login"
+          onClick={() => {
+            sessionStorage.clear()
+          }}
+        >
           <p>Sign out</p>
         </Link>
       </div>
