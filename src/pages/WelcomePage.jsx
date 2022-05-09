@@ -3,8 +3,10 @@ import NavBar from '../components/NavBar'
 import './WelcomePage.css'
 import Time from '../components/Time.jsx'
 import Weather from '../components/Weather.jsx'
+import { useNavigate } from 'react-router-dom'
 
 function WelcomePage() {
+  let navigate = useNavigate()
   const background = {
     backgroundImage: `linear-gradient(
         rgba(0, 0, 0, 0.5),
@@ -12,6 +14,11 @@ function WelcomePage() {
       ), url("welcome_page_background.jpg")`,
     backgroundSize: 'cover',
   }
+
+  window.addEventListener('popstate', function (event) {
+    event.preventDefault()
+    navigate('/welcomepage')
+  })
 
   return (
     <div className="welcome-page">
