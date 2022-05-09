@@ -19,7 +19,10 @@ function CheckHistory() {
   useEffect(() => {
     const fetchHistory = async () => {
       try {
-        const res = await fetch('http://192.168.100.78:3001/check_history')
+        const res = await fetch('http://192.168.100.78:3001/check_history', {
+          method: 'GET',
+          headers: { 'Access-Control-Allow-Origin': '*' },
+        })
         const data = await res.json()
         setChartData(data)
       } catch (error) {

@@ -11,12 +11,16 @@ function ManualFixed() {
     let duration = event.target.elements.duration.value
 
     await axios
-      .post('http://192.168.100.78:3001/change_config', {
-        mode: mode,
-        hour: hour,
-        minutes: minutes,
-        duration: duration,
-      })
+      .post(
+        'http://192.168.100.78:3001/change_config',
+        {
+          mode: mode,
+          hour: hour,
+          minutes: minutes,
+          duration: duration,
+        },
+        { 'Access-Control-Allow-Origin': '*' }
+      )
       .then((response) => {
         console.log(response)
       })

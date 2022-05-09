@@ -9,11 +9,15 @@ function ManualInterval() {
     let duration = event.target.elements.duration.value
 
     await axios
-      .post('http://192.168.100.78:3001/change_config', {
-        mode: mode,
-        interval: interval,
-        duration: duration,
-      })
+      .post(
+        'http://192.168.100.78:3001/change_config',
+        {
+          mode: mode,
+          interval: interval,
+          duration: duration,
+        },
+        { 'Access-Control-Allow-Origin': '*' }
+      )
       .then((response) => {
         console.log(response)
       })
