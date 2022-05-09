@@ -40,6 +40,24 @@ function App() {
             element={<SignUp handleSignUpData={handleSignUpData} />}
           ></Route>
           <Route
+            path="/welcomepage"
+            element={
+              <NotFound text="You have to be logged in to access this page" />
+            }
+          ></Route>
+          <Route
+            path="/changeconfig"
+            element={
+              <NotFound text="You have to be logged in to access this page" />
+            }
+          ></Route>
+          <Route
+            path="/checkhistory"
+            element={
+              <NotFound text="You have to be logged in to access this page" />
+            }
+          ></Route>
+          <Route
             path="*"
             element={
               <NotFound text="Ooooops, page you're searching for is not found" />
