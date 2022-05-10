@@ -4,6 +4,7 @@
   justify-content: flex-start;
   width: 13%;
   background-color: #39395f;
+  overflow: clip;
 }
 .navbar-logo {
   width: 10rem;

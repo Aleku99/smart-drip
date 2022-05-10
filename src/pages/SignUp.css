@@ -6,6 +6,7 @@
   flex-direction: column;
   background-color: #39395f;
   margin: 0 auto;
+  overflow: clip;
 }
 .login-logo {
   margin: 0 auto;
