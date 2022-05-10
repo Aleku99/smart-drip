@@ -11,4 +11,5 @@
     flex-direction: row;
     padding-left: 8rem;
     padding-top: 8rem;
+    overflow: auto;
   }
