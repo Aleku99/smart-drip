@@ -1,26 +1,27 @@
-import React from "react";
-import "./SignUp.css";
-import { useNavigate } from "react-router-dom";
-import { database, ref, set } from "../api/firebase";
-import { v4 as uuidv4 } from "uuid";
-import bcrypt from "bcryptjs/dist/bcrypt";
+import React from 'react'
+import './SignUp.css'
+import { useNavigate } from 'react-router-dom'
+import { database, ref, set } from '../api/firebase'
+import { v4 as uuidv4 } from 'uuid'
+import bcrypt from 'bcryptjs/dist/bcrypt'
+import cities from 'cities.json'
 
 function SignUp(props) {
-  let navigate = useNavigate();
+  let navigate = useNavigate()
 
   async function handleSignUp(event) {
-    event.preventDefault();
-    let fname = event.target.elements.fname.value;
-    let lname = event.target.elements.lname.value;
-    let city = event.target.elements.city.value;
-    let address = event.target.elements.address.value;
-    let phonenumber = event.target.elements.phonenumber.value;
-    let email = event.target.elements.email.value;
-    let password = event.target.elements.pass.value;
+    event.preventDefault()
+    let fname = event.target.elements.fname.value
+    let lname = event.target.elements.lname.value
+    let city = event.target.elements.city.value
+    let address = event.target.elements.address.value
+    let phonenumber = event.target.elements.phonenumber.value
+    let email = event.target.elements.email.value
+    let password = event.target.elements.pass.value
 
     bcrypt.hash(password, 0, function (err, hash) {
       if (err) {
-        alert("Signup unsuccessfull");
+        alert('Signup unsuccessfull')
       }
       let entry = {
         fname: fname,
@@ -30,11 +31,11 @@ function SignUp(props) {
         phonenumber: phonenumber,
         email: email,
         password: hash,
-      };
-      set(ref(database, uuidv4()), entry);
-      props.handleSignUpData(entry);
-      navigate("/welcomepage");
-    });
+      }
+      set(ref(database, 'users/' + uuidv4()), entry)
+      props.handleSignUpData(entry)
+      navigate('/welcomepage')
+    })
   }
 
   return (
@@ -80,6 +81,6 @@ function SignUp(props) {
         </form>
       </div>
     </div>
-  );
+  )
 }
-export default SignUp;
+export default SignUp

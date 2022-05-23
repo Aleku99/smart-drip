@@ -16,7 +16,7 @@ function LogIn(props) {
     let userFound = false
 
     const dbRef = ref(getDatabase())
-    get(child(dbRef, '/'))
+    get(child(dbRef, '/users'))
       .then((snapshot) => {
         if (snapshot.exists()) {
           snapshot.forEach((child) => {
