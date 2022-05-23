@@ -9,6 +9,7 @@ import CheckHistory from './pages/CheckHistory'
 import NotFound from './pages/NotFound.jsx'
 import { authActions } from './store/index'
 import { useDispatch, useSelector } from 'react-redux'
+import { useEffect } from 'react'
 
 function App() {
   const dispatch = useDispatch()
@@ -22,6 +23,16 @@ function App() {
     sessionStorage.setItem('userData', JSON.stringify(data))
     dispatch(authActions.setTrue())
   }
+  function setAuthState() {
+    if (sessionStorage.getItem('userData')) {
+      dispatch(authActions.setTrue())
+    } else {
+      dispatch(authActions.setFalse())
+    }
+  }
+  useEffect(() => {
+    setAuthState()
+  }, [])
   if (!auth) {
     return (
       <div className="App">
