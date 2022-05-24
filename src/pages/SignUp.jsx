@@ -32,8 +32,7 @@ function SignUp(props) {
         email: email,
         password: hash,
       }
-      const dbPath = `users/${uuidv4()}`
-      await set(ref(database, dbPath), entry)
+      await set(ref(database, `users/${uuidv4()}`), entry)
       props.handleSignUpData(entry)
       navigate('/welcomepage')
     })
