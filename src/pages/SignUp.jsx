@@ -19,7 +19,7 @@ function SignUp(props) {
     let email = event.target.elements.email.value
     let password = event.target.elements.pass.value
 
-    bcrypt.hash(password, 0, function (err, hash) {
+    bcrypt.hash(password, 0, async function (err, hash) {
       if (err) {
         alert('Signup unsuccessfull')
       }
@@ -32,7 +32,7 @@ function SignUp(props) {
         email: email,
         password: hash,
       }
-      set(ref(database, 'users/' + uuidv4()), entry)
+      await set(ref(database, `users/${uuidv4()}`), entry)
       props.handleSignUpData(entry)
       navigate('/welcomepage')
     })
