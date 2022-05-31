@@ -18,6 +18,7 @@ export default function Weather(props) {
     temp: 'unknown',
     city: 'unknown',
     main: 'unknown',
+    cod: 'unknown',
   })
 
   const icon_style = {
@@ -65,6 +66,7 @@ export default function Weather(props) {
           temp: Math.round(data.main.temp),
           city: data.name,
           main: chooseWeatherIcon(data.weather[0].main),
+          cod: data.cod,
         })
       } catch (err) {
         console.log(err)
@@ -73,11 +75,13 @@ export default function Weather(props) {
     fetchWeatherData()
   }, [])
 
-  return (
+  return weatherData.cod === 200 ? (
     <div className="weather">
       {weatherData.main}
       <span>{weatherData.temp}°C</span>
       <h2>{weatherData.city}</h2>
     </div>
+  ) : (
+    <></>
   )
 }
