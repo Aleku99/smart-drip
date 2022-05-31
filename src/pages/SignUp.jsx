@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import { database, ref, set } from '../api/firebase'
 import { v4 as uuidv4 } from 'uuid'
 import bcrypt from 'bcryptjs/dist/bcrypt'
-import axios from 'axios'
+import md5 from 'md5'
 
 const validateFormInputs = (fname, lname, city, phonenumber) => {
   let result = true
@@ -68,6 +68,7 @@ function SignUp(props) {
         if (err) {
           alert('Signup unsuccessfull')
         }
+        let usertoken = md5(fname + lname + email + hash)
         let entry = {
           fname: fname,
           lname: lname,
@@ -76,6 +77,7 @@ function SignUp(props) {
           phonenumber: phonenumber,
           email: email,
           password: hash,
+          usertoken: usertoken,
         }
         const dbPath = 'users/' + uuidv4()
         set(ref(database, dbPath), entry)
