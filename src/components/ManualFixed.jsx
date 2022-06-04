@@ -22,6 +22,11 @@ function ManualFixed() {
         { 'Access-Control-Allow-Origin': '*' }
       )
       .then((response) => {
+        if (response.status === 200) {
+          window.alert('Configuration updated succesfully')
+        } else {
+          window.alert('Configuration not updated')
+        }
         console.log(response)
       })
   }
