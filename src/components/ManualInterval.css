@@ -21,7 +21,6 @@ label {
   display: flex;
   justify-content: flex-start;
   flex-direction: row;
-  padding-top: 4rem;
 }
 .signup-redirect a {
   color: #f5eec2;
@@ -30,4 +29,13 @@ label {
 .input {
   display: flex;
   flex-direction: column;
+}
+.settings-div form {
+  margin-right: 2rem;
+}
+.daily-input{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  flex-wrap: nowrap;
 }

@@ -1,5 +1,5 @@
-import React from "react";
-import "./SelectedModeForm.css";
+import React from 'react'
+import './SelectedModeForm.css'
 
 function SelectedModeForm(props) {
   return (
@@ -11,7 +11,7 @@ function SelectedModeForm(props) {
           type="radio"
           id="manual_fixed"
           name="mode"
-          value="manual_fixed"
+          value="0"
         ></input>
         <label htmlFor="manual_fixed">manual (fixed time)</label>
       </div>
@@ -21,9 +21,9 @@ function SelectedModeForm(props) {
           type="radio"
           id="manual_interval"
           name="mode"
-          value="manual_interval"
+          value="1"
         ></input>
-        <label htmlFor="manual_interval">manual (specified interval)</label>
+        <label htmlFor="manual_interval">manual (interval)</label>
       </div>
       <div className="selected-mode-form-input">
         <input
@@ -31,12 +31,12 @@ function SelectedModeForm(props) {
           type="radio"
           id="auto"
           name="mode"
-          value="auto"
+          value="2"
         ></input>
         <label htmlFor="auto">automatic (sensors dependent)</label>
       </div>
     </div>
-  );
+  )
 }
 
-export default SelectedModeForm;
+export default SelectedModeForm

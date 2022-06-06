@@ -10,5 +10,10 @@
   justify-content: flex-start;
   flex-direction: column;
   padding-left: 8rem;
-  padding-top: 8rem;
+  padding-top: 3rem;
+}
+#title {
+  color: #f5eec2;
+  font-size: 3rem;
+  margin-left: -4rem;
 }

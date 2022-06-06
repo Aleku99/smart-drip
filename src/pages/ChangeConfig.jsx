@@ -17,12 +17,16 @@ function ChangeConfig() {
   const systemDetected = useSelector((state) => state.system.systemDetected)
   const USER_TOKEN = JSON.parse(sessionStorage.getItem('userData')).usertoken
   function selectionHandler(event) {
-    if (event.target.value === 'manual_fixed') {
-      setConfigOption(0)
-    } else if (event.target.value === 'manual_interval') {
-      setConfigOption(1)
-    } else {
-      setConfigOption(2)
+    setConfigOption(parseInt(event.target.value))
+  }
+
+  function settingDescription() {
+    if (configOption === 0) {
+      return <p>Select dates, time and duration of your irrigation.</p>
+    } else if (configOption === 1) {
+      return <p>Select dates, interval time and duration of irrigation.</p>
+    } else if (configOption === 2) {
+      return <p>Automatic mode enabled. System will start automatically.</p>
     }
   }
 
@@ -46,7 +50,9 @@ function ChangeConfig() {
     <div className="change-config">
       <NavBar />
       <div className="change-config-content">
+        <h1 id="title">SMART-DRIP</h1>
         <SelectedModeForm handleSelection={selectionHandler} />
+        {settingDescription()}
         {settingsArray[configOption]}
       </div>
     </div>

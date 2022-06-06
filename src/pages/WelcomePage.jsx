@@ -24,9 +24,14 @@ function WelcomePage() {
     <div className="welcome-page">
       <NavBar />
       <div className="welcome-page-content" style={background}>
+        <h1>SMART-DRIP</h1>
         <Time />
         <Weather />
-        <h1>Welcome {JSON.parse(sessionStorage.getItem('userData')).fname}</h1>
+        <h1>
+          Welcome to smart-drip{' '}
+          {JSON.parse(sessionStorage.getItem('userData')).fname}
+        </h1>
+        <h2>- the future of irrigation -</h2>
       </div>
     </div>
   )

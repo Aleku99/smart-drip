@@ -21,7 +21,6 @@ label {
   display: flex;
   justify-content: flex-start;
   flex-direction: row;
-  padding-top: 4rem;
 }
 .signup-redirect a {
   color: #f5eec2;

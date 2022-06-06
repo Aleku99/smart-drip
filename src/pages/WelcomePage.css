@@ -16,6 +16,9 @@
     1px 1px 0 #000;
   font-size: 4rem;
 }
+h2{
+  text-align: center;
+}
 .time-dots {
   animation: blink;
 }
