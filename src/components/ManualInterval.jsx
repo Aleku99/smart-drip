@@ -5,13 +5,13 @@ import './ManualInterval.css'
 import DtPicker from 'react-calendar-datetime-picker'
 import 'react-calendar-datetime-picker/dist/index.css'
 function ManualInterval() {
-  const [date, setDate] = useState(null)
+  const [date, setDate] = useState(undefined)
   const [daily, setDaily] = useState(false)
 
   const handleDailyCheckBox = (event) => {
     setDaily(event.target.checked)
     if (event.target.checked === true) {
-      setDate(null)
+      setDate(undefined)
     }
   }
 
@@ -20,25 +20,33 @@ function ManualInterval() {
     let mode = '1'
     let interval = event.target.elements.time_interval.value
     let duration = event.target.elements.duration.value
+    let dates = date
 
-    await axios
-      .post(
-        'http://192.168.100.78:3001/change_config',
-        {
-          mode: mode,
-          interval: interval,
-          duration: duration,
-        },
-        { 'Access-Control-Allow-Origin': '*' }
+    if (date === undefined && daily === false) {
+      window.alert(
+        'You have to either select daily or pick irrigation dates from calendar'
       )
-      .then((response) => {
-        if (response.status === 200) {
-          window.alert('Configuration updated succesfully')
-        } else {
-          window.alert('Configuration not updated')
-        }
-        console.log(response)
-      })
+    } else {
+      await axios
+        .post(
+          'http://192.168.100.78:3001/change_config',
+          {
+            mode: mode,
+            interval: interval,
+            duration: duration,
+            dates: dates,
+          },
+          { 'Access-Control-Allow-Origin': '*' }
+        )
+        .then((response) => {
+          if (response.status === 200) {
+            window.alert('Configuration updated succesfully')
+          } else {
+            window.alert('Configuration not updated')
+          }
+          console.log(response)
+        })
+    }
   }
   return (
     <>
@@ -52,6 +60,7 @@ function ManualInterval() {
               name="time_interval"
               min="1"
               max="24"
+              required
             ></input>
           </div>
           <div className="input">
@@ -62,6 +71,7 @@ function ManualInterval() {
               name="duration"
               min="1"
               max="600"
+              required
             ></input>
           </div>
           <label>Dates</label>

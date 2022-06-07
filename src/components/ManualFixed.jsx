@@ -5,13 +5,13 @@ import './ManualFixed.css'
 import DtPicker from 'react-calendar-datetime-picker'
 import 'react-calendar-datetime-picker/dist/index.css'
 function ManualFixed() {
-  const [date, setDate] = useState(null)
+  const [date, setDate] = useState(undefined)
   const [daily, setDaily] = useState(false)
 
   const handleDailyCheckBox = (event) => {
     setDaily(event.target.checked)
     if (event.target.checked === true) {
-      setDate(null)
+      setDate(undefined)
     }
   }
   async function handleSubmit(event) {
@@ -21,33 +21,41 @@ function ManualFixed() {
     let hour = time.split(':')[0]
     let minutes = time.split(':')[1]
     let duration = event.target.elements.duration.value
-
-    await axios
-      .post(
-        'http://192.168.100.78:3001/change_config',
-        {
-          mode: mode,
-          hour: hour,
-          minutes: minutes,
-          duration: duration,
-        },
-        { 'Access-Control-Allow-Origin': '*' }
+    let dates = date
+    console.log(dates)
+    if (date === undefined && daily === false) {
+      window.alert(
+        'You have to either select daily or pick irrigation dates from calendar'
       )
-      .then((response) => {
-        if (response.status === 200) {
-          window.alert('Configuration updated succesfully')
-        } else {
-          window.alert('Configuration not updated')
-        }
-        console.log(response)
-      })
+    } else {
+      await axios
+        .post(
+          'http://192.168.100.78:3001/change_config',
+          {
+            mode: mode,
+            hour: hour,
+            minutes: minutes,
+            duration: duration,
+            dates: dates,
+          },
+          { 'Access-Control-Allow-Origin': '*' }
+        )
+        .then((response) => {
+          if (response.status === 200) {
+            window.alert('Configuration updated succesfully')
+          } else {
+            window.alert('Configuration not updated')
+          }
+          console.log(response)
+        })
+    }
   }
   return (
     <div className="settings-div">
       <form onSubmit={handleSubmit} style={{ width: '100%' }}>
         <div className="input">
           <label htmlFor="time">Time</label>
-          <input type="time" id="time" name="time"></input>
+          <input type="time" id="time" name="time" required></input>
         </div>
         <div className="input">
           <label htmlFor="duration">Duration (s)</label>
@@ -57,6 +65,7 @@ function ManualFixed() {
             name="duration"
             min="1"
             max="600"
+            required
           ></input>
         </div>
         <label>Dates</label>
