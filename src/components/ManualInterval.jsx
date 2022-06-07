@@ -69,7 +69,7 @@ function ManualInterval() {
               type="number"
               id="duration"
               name="duration"
-              min="1"
+              min="60"
               max="600"
               required
             ></input>
