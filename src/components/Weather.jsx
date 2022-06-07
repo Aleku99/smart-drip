@@ -73,7 +73,7 @@ export default function Weather(props) {
       }
     }
     fetchWeatherData()
-  }, [])
+  })
 
   return weatherData.cod === 200 ? (
     <div className="weather">

@@ -11,7 +11,7 @@ import {
 } from 'chart.js'
 import { Line } from 'react-chartjs-2'
 import './Charts.css'
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 
 ChartJS.register(
   CategoryScale,
@@ -36,7 +36,6 @@ export const options = {
   },
 }
 
-const date = new Date()
 let labels_24hrs = Array.from(Array(24).keys()).reverse()
 labels_24hrs = labels_24hrs.map((element) => chooseHour(element))
 let labels_7days = Array.from(Array(7).keys()).reverse()
@@ -167,6 +166,8 @@ function Charts(props) {
           })
         }
         break
+      default: {
+      }
     }
 
     if (type === 'HUMIDITY') {

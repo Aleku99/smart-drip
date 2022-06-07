@@ -43,7 +43,7 @@ function CheckHistory() {
     }
     checkSystem()
     fetchHistory()
-  }, [])
+  }, [USER_TOKEN, dispatch])
 
   return systemDetected ? (
     <div className="check-history">

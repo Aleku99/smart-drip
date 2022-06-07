@@ -1,5 +1,6 @@
 import React from 'react'
 import './NotFound.css'
+import { Link } from 'react-router-dom'
 function NotFound(props) {
   return (
     <div className="login">
@@ -11,6 +12,9 @@ function NotFound(props) {
         ></img>
       </div>
       <h1 className="not-found-text">{props.text}</h1>
+      <Link to="/">
+        <h2 className="not-found-text">Back to home screen</h2>
+      </Link>
     </div>
   )
 }

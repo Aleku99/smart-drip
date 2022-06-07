@@ -32,7 +32,7 @@ function App() {
   }
   useEffect(() => {
     setAuthState()
-  }, [])
+  })
   if (!auth) {
     return (
       <div className="App">
@@ -82,12 +82,7 @@ function App() {
   return (
     <div className="App">
       <Routes>
-        <Route exact path="/" element={<WelcomePage />}></Route>
-
-        <Route
-          path="/signup"
-          element={<SignUp handleSignUpData={handleSignUpData} />}
-        ></Route>
+        <Route path="/" element={<WelcomePage />}></Route>
         <Route path="/welcomepage" element={<WelcomePage />}></Route>
         <Route path="/changeconfig" element={<ChangeConfig />}></Route>
         <Route path="/checkhistory" element={<CheckHistory />}></Route>

@@ -4,9 +4,29 @@ import './WelcomePage.css'
 import Time from '../components/Time.jsx'
 import Weather from '../components/Weather.jsx'
 import { useNavigate } from 'react-router-dom'
+import { useEffect, useCallback } from 'react'
+import { useSelector } from 'react-redux'
 
 function WelcomePage() {
   let navigate = useNavigate()
+  const auth = useSelector((state) => state.auth.authenticated)
+  const handleBackPress = useCallback(
+    (event) => {
+      event.preventDefault()
+      if (auth) {
+        navigate('/welcomepage')
+      }
+      console.log(auth)
+    },
+    [auth, navigate]
+  )
+  useEffect(() => {
+    window.addEventListener('popstate', handleBackPress)
+    return () => {
+      window.removeEventListener('popstate', handleBackPress)
+    }
+  }, [handleBackPress])
+
   const background = {
     backgroundImage: `linear-gradient(
         rgba(0, 0, 0, 0.5),
@@ -14,11 +34,6 @@ function WelcomePage() {
       ), url("welcome_page_background.jpg")`,
     backgroundSize: 'cover',
   }
-
-  window.addEventListener('popstate', function (event) {
-    event.preventDefault()
-    navigate('/welcomepage')
-  })
 
   return (
     <div className="welcome-page">

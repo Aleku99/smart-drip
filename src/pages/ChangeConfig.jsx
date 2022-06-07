@@ -44,7 +44,7 @@ function ChangeConfig() {
         })
     }
     checkSystem()
-  }, [])
+  }, [USER_TOKEN, dispatch])
 
   return systemDetected ? (
     <div className="change-config">
