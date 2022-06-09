@@ -80,18 +80,34 @@ function Charts(props) {
   const [label, setLabel] = useState('24hrs')
   let temperature_data = [] //use in chooseData function
   let humidity_data = [] //use in chooseData function
+  let labels_custom_hrs = Array.from(
+    Array(props.data.humidity_data.length).keys()
+  ).reverse()
+  labels_custom_hrs = labels_custom_hrs.map((element) => chooseHour(element))
+  let labels_custom_days = Array.from(Array(1).keys()).reverse()
+  labels_custom_days = labels_custom_days.map((element) => chooseDay(element))
 
   function switchlabels(event) {
     setLabel(event.target.value)
   }
 
   function chooseLabel(label) {
-    if (label === '24hrs') {
-      return labels_24hrs
-    } else if (label === '7days') {
-      return labels_7days
+    if (props.data.humidity_data.length < 24) {
+      if (label === '24hrs') {
+        return labels_custom_hrs
+      } else if (label === '7days') {
+        return labels_custom_days
+      } else {
+        return labels_custom_days
+      }
     } else {
-      return labels_1month
+      if (label === '24hrs') {
+        return labels_24hrs
+      } else if (label === '7days') {
+        return labels_7days
+      } else {
+        return labels_1month
+      }
     }
   }
   function chooseData(label, type) {
