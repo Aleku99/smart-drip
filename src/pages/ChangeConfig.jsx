@@ -26,7 +26,12 @@ function ChangeConfig() {
     } else if (configOption === 1) {
       return <p>Select dates, interval time and duration of irrigation.</p>
     } else if (configOption === 2) {
-      return <p>Automatic mode enabled. System will start automatically.</p>
+      return (
+        <p>
+          Automatic mode enabled. System will start automatically depending on
+          humidity and temperature sensor
+        </p>
+      )
     }
   }
 

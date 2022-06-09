@@ -33,7 +33,7 @@ function SelectedModeForm(props) {
           name="mode"
           value="2"
         ></input>
-        <label htmlFor="auto">automatic (sensors dependent)</label>
+        <label htmlFor="auto">automatic</label>
       </div>
     </div>
   )
