@@ -4,6 +4,7 @@ import axios from 'axios'
 import './ManualInterval.css'
 import DtPicker from 'react-calendar-datetime-picker'
 import 'react-calendar-datetime-picker/dist/index.css'
+import { updateConfiguration } from '../api/firebase'
 function ManualInterval() {
   const [date, setDate] = useState(undefined)
   const [daily, setDaily] = useState(false)
@@ -11,7 +12,7 @@ function ManualInterval() {
   const handleDailyCheckBox = (event) => {
     setDaily(event.target.checked)
     if (event.target.checked === true) {
-      setDate(undefined)
+      setDate('daily')
     }
   }
 
@@ -46,6 +47,13 @@ function ManualInterval() {
           }
           console.log(response)
         })
+      let config = {
+        mode: mode,
+        interval: interval,
+        duration: duration,
+        date: date,
+      }
+      updateConfiguration(config)
     }
   }
   return (

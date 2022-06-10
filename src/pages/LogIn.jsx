@@ -27,7 +27,7 @@ function LogIn(props) {
                 child.val().password,
                 function (err, result) {
                   if (result) {
-                    props.handleLoginData(child.val())
+                    props.handleLoginData({ ...child.val(), key: child.key })
                     navigate('/welcomepage')
                   } else {
                     alert('Password not correct')

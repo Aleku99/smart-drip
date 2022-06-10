@@ -1,7 +1,8 @@
 import React from 'react'
 import axios from 'axios'
+import { updateConfiguration } from '../api/firebase'
 function handleSubmit() {
-  let mode = 2
+  let mode = '2'
   axios
     .post(
       'http://192.168.100.78:3001/change_config',
@@ -23,6 +24,8 @@ function handleSubmit() {
       }
       console.log(response)
     })
+  let config = { mode: mode }
+  updateConfiguration(config)
 }
 function Automatic() {
   React.useEffect(() => {

@@ -4,6 +4,7 @@ import axios from 'axios'
 import './ManualFixed.css'
 import DtPicker from 'react-calendar-datetime-picker'
 import 'react-calendar-datetime-picker/dist/index.css'
+import { updateConfiguration } from '../api/firebase'
 function ManualFixed() {
   const [date, setDate] = useState(undefined)
   const [daily, setDaily] = useState(false)
@@ -11,7 +12,7 @@ function ManualFixed() {
   const handleDailyCheckBox = (event) => {
     setDaily(event.target.checked)
     if (event.target.checked === true) {
-      setDate(undefined)
+      setDate('daily')
     }
   }
   async function handleSubmit(event) {
@@ -48,6 +49,14 @@ function ManualFixed() {
           }
           console.log(response)
         })
+      let config = {
+        mode: mode,
+        hour: hour,
+        minutes: minutes,
+        duration: duration,
+        dates: dates,
+      }
+      updateConfiguration(config)
     }
   }
   return (
