@@ -5,7 +5,7 @@ import './ManualFixed.css'
 import DtPicker from 'react-calendar-datetime-picker'
 import 'react-calendar-datetime-picker/dist/index.css'
 import { updateConfiguration } from '../api/firebase'
-function ManualFixed() {
+function ManualFixed(props) {
   const [date, setDate] = useState(undefined)
   const [daily, setDaily] = useState(false)
 
@@ -57,6 +57,7 @@ function ManualFixed() {
         dates: dates,
       }
       updateConfiguration(config)
+      props.updateEventList()
     }
   }
   return (

@@ -8,7 +8,7 @@
   flex-grow: 1;
   display: flex;
   justify-content: flex-start;
-  flex-direction: column;
+  flex-direction: row;
   padding-left: 8rem;
   padding-top: 3rem;
 }
@@ -16,4 +16,22 @@
   color: #f5eec2;
   font-size: 3rem;
   margin-left: -4rem;
+}
+.change-config-form{
+  background-color: #416a59;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  width:50%;
+}
+.change-config-event-list{
+  width:50%
+}
+h1{
+  color: #f5eec2;
+}
+li{
+  color: #f5eec2;
+  margin: 0.75rem;
+  font-weight: bold
 }

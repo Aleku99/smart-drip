@@ -78,6 +78,9 @@ function SignUp(props) {
           email: email,
           password: hash,
           usertoken: usertoken,
+          config: {
+            mode: '2',
+          },
         }
         const documentId = uuidv4()
         const dbPath = 'users/' + documentId

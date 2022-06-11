@@ -5,7 +5,7 @@ import './ManualInterval.css'
 import DtPicker from 'react-calendar-datetime-picker'
 import 'react-calendar-datetime-picker/dist/index.css'
 import { updateConfiguration } from '../api/firebase'
-function ManualInterval() {
+function ManualInterval(props) {
   const [date, setDate] = useState(undefined)
   const [daily, setDaily] = useState(false)
 
@@ -51,9 +51,10 @@ function ManualInterval() {
         mode: mode,
         interval: interval,
         duration: duration,
-        date: date,
+        dates: date,
       }
       updateConfiguration(config)
+      props.updateEventList()
     }
   }
   return (
