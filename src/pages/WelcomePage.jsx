@@ -5,21 +5,15 @@ import Time from '../components/Time.jsx'
 import Weather from '../components/Weather.jsx'
 import { useNavigate } from 'react-router-dom'
 import { useEffect, useCallback } from 'react'
-import { useSelector } from 'react-redux'
 
-function WelcomePage() {
+function WelcomePage(props) {
   let navigate = useNavigate()
-  const auth = useSelector((state) => state.auth.authenticated)
-  const handleBackPress = useCallback(
-    (event) => {
-      event.preventDefault()
-      if (auth) {
-        navigate('/welcomepage')
-      }
-      console.log(auth)
-    },
-    [auth, navigate]
-  )
+  const handleBackPress = useCallback((event) => {
+    event.preventDefault()
+    if (props.auth) {
+      navigate('/welcomepage')
+    }
+  }, [])
   useEffect(() => {
     window.addEventListener('popstate', handleBackPress)
     return () => {

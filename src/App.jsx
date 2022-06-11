@@ -82,8 +82,11 @@ function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path="/" element={<WelcomePage />}></Route>
-        <Route path="/welcomepage" element={<WelcomePage />}></Route>
+        <Route path="/" element={<WelcomePage auth={auth} />}></Route>
+        <Route
+          path="/welcomepage"
+          element={<WelcomePage auth={auth} />}
+        ></Route>
         <Route path="/changeconfig" element={<ChangeConfig />}></Route>
         <Route path="/checkhistory" element={<CheckHistory />}></Route>
         <Route
