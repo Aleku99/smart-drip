@@ -49,15 +49,17 @@ function ManualFixed(props) {
           }
           console.log(response)
         })
-      let config = {
-        mode: mode,
-        hour: hour,
-        minutes: minutes,
-        duration: duration,
-        dates: dates,
-      }
-      updateConfiguration(config)
-      props.updateEventList()
+        .finally(() => {
+          let config = {
+            mode: mode,
+            hour: hour,
+            minutes: minutes,
+            duration: duration,
+            dates: dates,
+          }
+          updateConfiguration(config)
+          props.updateEventList()
+        })
     }
   }
   return (

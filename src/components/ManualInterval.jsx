@@ -47,14 +47,16 @@ function ManualInterval(props) {
           }
           console.log(response)
         })
-      let config = {
-        mode: mode,
-        interval: interval,
-        duration: duration,
-        dates: date,
-      }
-      updateConfiguration(config)
-      props.updateEventList()
+        .finally(() => {
+          let config = {
+            mode: mode,
+            interval: interval,
+            duration: duration,
+            dates: date,
+          }
+          updateConfiguration(config)
+          props.updateEventList()
+        })
     }
   }
   return (

@@ -26,8 +26,10 @@ function Automatic(props) {
         }
         console.log(response)
       })
-    let config = { mode: mode }
-    updateConfiguration(config)
+      .finally(() => {
+        let config = { mode: mode }
+        updateConfiguration(config)
+      })
   }
   React.useEffect(() => {
     handleSubmit()
