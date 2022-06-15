@@ -5,6 +5,8 @@ import { updateConfiguration } from '../api/firebase'
 function Automatic(props) {
   function handleSubmit() {
     let mode = '2'
+    let config = { mode: mode }
+    updateConfiguration(config)
     axios
       .post(
         'http://192.168.100.78:3001/change_config',
@@ -25,10 +27,6 @@ function Automatic(props) {
           window.alert('Configuration not updated')
         }
         console.log(response)
-      })
-      .finally(() => {
-        let config = { mode: mode }
-        updateConfiguration(config)
       })
   }
   React.useEffect(() => {

@@ -29,6 +29,15 @@ function ManualFixed(props) {
         'You have to either select daily or pick irrigation dates from calendar'
       )
     } else {
+      let config = {
+        mode: mode,
+        hour: hour,
+        minutes: minutes,
+        duration: duration,
+        dates: dates,
+      }
+      updateConfiguration(config)
+      props.updateEventList()
       await axios
         .post(
           'http://192.168.100.78:3001/change_config',
@@ -48,17 +57,6 @@ function ManualFixed(props) {
             window.alert('Configuration not updated')
           }
           console.log(response)
-        })
-        .finally(() => {
-          let config = {
-            mode: mode,
-            hour: hour,
-            minutes: minutes,
-            duration: duration,
-            dates: dates,
-          }
-          updateConfiguration(config)
-          props.updateEventList()
         })
     }
   }
