@@ -78,7 +78,7 @@ function ManualInterval(props) {
               type="number"
               id="duration"
               name="duration"
-              min="60"
+              min="5"
               max="600"
               required
             ></input>
