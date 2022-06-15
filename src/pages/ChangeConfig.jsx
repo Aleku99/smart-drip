@@ -46,26 +46,28 @@ function ChangeConfig() {
     if (config.mode === '0') {
       let hour = config.hour
       let minutes = config.minutes
+      let duration = config.duration
       if (config.dates === 'daily') {
-        setEvents([`everyday at ${hour}:${minutes}`])
+        setEvents([`everyday at ${hour}:${minutes} for ${duration}s`])
       } else {
         let events = []
         config.dates.forEach((date) => {
           events.push(
-            `${date.day}/${date.month}/${date.year} at ${hour}:${minutes}`
+            `${date.day}/${date.month}/${date.year} at ${hour}:${minutes} for ${duration}s`
           )
         })
         setEvents(events)
       }
     } else if (config.mode === '1') {
       let interval = config.interval
+      let duration = config.duration
       if (config.dates === 'daily') {
-        setEvents([`everyday every ${interval} hour(s)`])
+        setEvents([`everyday every ${interval} hour(s) for ${duration}s`])
       } else {
         let events = []
         config.dates.forEach((date) => {
           events.push(
-            `${date.day}/${date.month}/${date.year}  every ${interval} hour(s)`
+            `${date.day}/${date.month}/${date.year}  every ${interval} hour(s) for ${duration}s`
           )
         })
         setEvents(events)
